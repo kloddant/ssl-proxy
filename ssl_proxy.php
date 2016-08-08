@@ -32,6 +32,7 @@
 		CURLOPT_VERBOSE => true,
 		CURLOPT_BINARYTRANSFER => true,
 		CURLOPT_TIMEOUT => 900,
+		CURLOPT_USERAGENT => "Mozilla/5.0 (Windows NT x.y; WOW64; rv:10.0) Gecko/20100101 Firefox/10.0",
 	);
 
 	$curl = curl_init($url);
