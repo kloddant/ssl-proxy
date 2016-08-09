@@ -10,6 +10,7 @@
 	$scheme = (isset($url_pieces['scheme']) ? $url_pieces['scheme']."://" : '');
 	$host = (isset($url_pieces['host']) ? $url_pieces['host'] : '');
 	$path = $url_pieces['path'];
+	$file = basename($path);
 
 	$path = urldecode($path);
 	$path = implode('/', array_map('rawurlencode', explode('/', $path)));
@@ -37,7 +38,8 @@
 
 	$curl = curl_init($url);
 	curl_setopt_array($curl, $curl_options); 
-	header('Content-Type: '.curl_getinfo($curl, CURLINFO_CONTENT_TYPE));  
+	header('Content-Type: '.curl_getinfo($curl, CURLINFO_CONTENT_TYPE));
+	header('Content-Disposition: filename="'.$file.'"');
 	$result = curl_exec($curl);
 	curl_close($curl);
 	 
